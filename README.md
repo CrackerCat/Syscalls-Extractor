@@ -28,3 +28,31 @@ $ python3 .\syscalls-extractor.py
 
 [+] Done
 ```
+
+## Adding syscalls
+
+Add to the syscalls dict at the top of the script to add more functions to check for syscalls.
+
+E.g.:
+
+```
+syscalls = {
+    "ntoskrnl.exe": [
+        "ZwOpenProcess",
+        "ZwCreateThreadEx",
+        "ZwWriteVirtualMemory",
+        "ZwAllocateVirtualMemory",
+        "ZwCreateSection",
+        "ZwMapViewOfSection",
+        "ZwCreateProcess",
+        "ZwProtectVirtualMemory"
+    ],
+}
+
+Native and debug symbols are checked.
+```
+
+## Logic
+
+This works by finding the function, locating the next `jmp` instruction and confirming that the instruction before hand was a `mov eax`.
+If so the value moved into eax is returned as the syscall instruction.
