@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pycodestyle = "*"
+autopep8 = "*"
+pylint = "*"
+rope = "*"
+
+[packages]
+r2pipe = "*"
+r2 = "*"
+cabarchive = "*"
